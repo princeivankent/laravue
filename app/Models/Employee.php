@@ -82,7 +82,7 @@ class Employee extends Model
             ->whereEmployeeId($employee_id)
             ->first();
         
-        // $query->name = ucwords(strtolower($query['name']));
+        $query->name = ucwords(strtolower($query->name));
             
         return $query;
     }
