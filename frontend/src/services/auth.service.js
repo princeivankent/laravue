@@ -26,10 +26,10 @@ const UserService = {
     * @returns access_token
     * @throws AuthenticationError 
   **/
-  login: async function(employee_number, password) {
+  login: async (employee_number, password) => {
     const requestData = {
       method: 'POST',
-      url: "/api/login",
+      url: "/api/v1/login",
       data: {
         employee_number,
         password
@@ -62,7 +62,7 @@ const UserService = {
   register: async (name, username, password) => {
     const requestData = {
       method: 'POST',
-      url: "/api/register",
+      url: "/api/v1/register",
       data: {
         name: name,
         username: username,
@@ -89,7 +89,7 @@ const UserService = {
     // Remove the token and remove Authorization header from Api Service as well
     const requestData = {
       method: 'POST',
-      url: "/api/logout",
+      url: "/api/v1/logout",
       data: {
         access_token: TokenService.getToken()
       }

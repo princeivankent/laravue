@@ -1,10 +1,10 @@
-// const PageNotFound = () => import(/* webpackChunkName: "page-not-found" */ '../pages/PageNotFound')
 const AppLayout = () => import(/* webpackChunkName: "main" */ '../layouts/AppLayout')
-// const Login = () => import(/* webpackChunkName: "login" */ '../pages/Login')
+const Login = () => import(/* webpackChunkName: "login" */ '../pages/Login')
 const Home = () => import(/* webpackChunkName: "home" */ '../pages/Home')
 
 const routes = [
   { path: '/', redirect: '/home' },
+  { path: '*', redirect: '/home' },
   {
     path: '/', 
     component: AppLayout,
@@ -14,6 +14,10 @@ const routes = [
     children: [
       { path: '/home', component: Home },
     ]
+  },
+  {
+    path: '/login',
+    component: Login
   }
 ];
 

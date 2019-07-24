@@ -1,140 +1,62 @@
 <script>
-import { employeeNumberRules, passwordRules } from '../helpers/validators'
-
 export default {
   name: 'Login',
   metaInfo: {
     title: 'Login'
-  },
-  data () {
-    return {
-      valid: true,
-      employee_number: '',
-      password: '',
-      employeeNumberRules,
-      passwordRules
-    }
-  },
-  computed: {
-    hasError () {
-      return this.$store.state.user.authenticationError ? true : false
-    }
-  },
-  methods: {
-    validate () {
-      if (this.$refs.form.validate()) {
-        this.snackbar = true
-      }
-    },
-
-    reset () {
-      this.$refs.form.reset()
-    },
-
-    resetValidation () {
-      this.$refs.form.resetValidation()
-    },
-
-    async login () {
-      if (this.$refs.form.validate()) {
-        this.$store.dispatch('user/loginAction', {
-          employee_number: this.employee_number, 
-          password: this.password
-        })
-      }
-      else {
-        // Produce error message
-      }
-    }
   }
 }
 </script>
 
 <template>
-  <v-app>
-    <v-toolbar app dark>
-      <v-toolbar-title class="headline text-uppercase">
-        <span class="red--text">ISUZU</span>
-        <span class="font-weight-light">MATERIAL DESIGN</span>
-      </v-toolbar-title>
-      <v-spacer></v-spacer>
-      <v-btn
-        flat
-        target="_blank"
-      >
-        <span class="mr-2">Latest Release</span>
-      </v-btn>
-    </v-toolbar>
+	<div class="page-content" id="login-view">
+		<div class="content-wrapper">
+			<div class="content d-flex justify-content-center align-items-center">
+				<div class="login-form">
+					<div class="card mb-0">
+						<div class="card-body">
+							<div class="text-center mb-3">
+                <img src="../assets/images/isuzu-logo.png" alt="isuzu logo" height="25">
+								<h5 class="mb-0">Login to your account</h5>
+								<span class="d-block text-muted">Your credentials</span>
+							</div>
 
-    <v-content>
-      <v-container>
-        <v-layout>
-          <v-flex xs12 sm4 offset-sm4>
-            <v-snackbar
-              v-model="hasError"
-              :multi-line="false"
-              :right="true"
-              :timeout="5000"
-              :top="true"
-              color="red darken-1"
-            >
-              {{ $store.state.user.authenticationError }}
-              <v-btn
-                color="white"
-                flat
-                @click="$store.commit('user/RESET_ERRORS')"
-              >
-                Close
-              </v-btn>
-            </v-snackbar>
-            <v-form
-              class="mt-5"
-              ref="form"
-              v-model="valid"
-              @submit.prevent="login"
-              lazy-validation
-            >
-              <label>Employee Number</label>
-              <v-text-field
-                v-model="employee_number"
-                :counter="10"
-                :rules="employeeNumberRules"
-                solo
-                autofocus
-                required
-              ></v-text-field>
+							<div class="form-group form-group-feedback form-group-feedback-left">
+								<input type="text" class="form-control" placeholder="Username">
+								<div class="form-control-feedback">
+									<i class="icon-user text-muted"></i>
+								</div>
+							</div>
 
-              <label>Password</label>
-              <v-text-field
-                type="password"
-                v-model="password"
-                :rules="passwordRules"
-                solo
-                required
-              ></v-text-field>
+							<div class="form-group form-group-feedback form-group-feedback-left">
+								<input type="password" class="form-control" placeholder="Password">
+								<div class="form-control-feedback">
+									<i class="icon-lock2 text-muted"></i>
+								</div>
+							</div>
 
-              <v-btn
-                v-if="$store.state.user.isAuthenticating"
-                :disabled="true"
-                block
-              >
-                <v-icon small>fa fa-sync fa-spin</v-icon>&nbsp;
-              </v-btn>
+							<div class="form-group d-flex align-items-center">
+								<a href="login_password_recover.html" class="ml-auto">Forgot password?</a>
+							</div>
 
-              <v-btn
-                type="submit"
-                v-else
-                :disabled="!valid"
-                color="success"
-                block
-              >
-                Login &nbsp;
-                <v-icon small>fa fa-arrow-right</v-icon>
-              </v-btn>
-            </v-form>
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-content>
-  </v-app>
+							<div class="form-group mb-0">
+								<button 
+                  @click="$router.push('/home')"
+                  class="btn btn-danger btn-block"
+                >
+                  Sign in 
+                  <i class="icon-circle-right2 ml-2"></i>
+                </button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </template>
+
+<style scoped>
+#login-view {
+  background-color: #37474F;
+}
+</style>
