@@ -263,7 +263,7 @@
             <a href="#" class="dropdown-item"><i class="icon-comment-discussion"></i> Messages <span class="badge badge-pill bg-indigo-400 ml-auto">58</span></a>
             <div class="dropdown-divider"></div>
             <a href="#" class="dropdown-item"><i class="icon-cog5"></i> Account settings</a>
-            <button class="dropdown-item" @click="$router.push('/login')"><i class="icon-switch2"></i> Logout </button>
+            <button class="dropdown-item" @click="$store.dispatch('user/logoutAction')"><i class="icon-switch2"></i> Logout </button>
           </div>
         </li>
       </ul>

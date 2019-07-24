@@ -70,15 +70,13 @@ const user = {
         const response = await UserService.login(employee_number, password)
         commit('loginSuccess', response)
 
-        router.push('/form')
-
-        return true
+        router.push('/home')
       } 
       catch (e) {
         if (e instanceof AuthenticationError) {
           commit('loginError', {errorCode: e.errorCode, errorMessage: e.message})
         }
-
+        
         return false
       }
     },
