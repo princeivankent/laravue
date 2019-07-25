@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar sidebar-dark sidebar-main sidebar-expand-md" style="min-height: 100vh;">
+  <div class="sidebar sidebar-dark sidebar-main sidebar-expand-md" >
     <div class="sidebar-mobile-toggler text-center">
       <a href="#" class="sidebar-mobile-main-toggle">
         <i class="icon-arrow-left8"></i>

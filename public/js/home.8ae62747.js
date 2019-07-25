@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["home"],{bc13b:function(e,t,n){"use strict";n.r(t);var l=function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div")},a=[],o={name:"App",metaInfo:{title:"Home",titleTemplate:"%s | Sample Project"}},c=o,p=n("2877"),i=Object(p["a"])(c,l,a,!1,null,null,null);t["default"]=i.exports}}]);
+//# sourceMappingURL=home.8ae62747.js.map

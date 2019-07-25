@@ -5,7 +5,7 @@
     <div class="page-content">
       <AppSideBar />
 
-      <div class="content-wrapper">
+      <div class="content-wrapper" style="min-height: calc(100vh - 48px);">
         <AppSubHeader />
 
         <div class="content pt-0">
