@@ -37,6 +37,34 @@ class Employee extends Model
         return $query;
     }
 
+    public static function getUserWithoutPassword ($employee_number)
+    {
+        $query = DB::connection('ipc_central')
+            ->table('personal_information_tab as pit')
+            ->select(
+                'emt.id',
+                'emt.employee_no',
+                'emt.cost_center',
+                DB::raw('CONCAT(pit.last_name,", ",pit.first_name) as name'),
+                'emt.position_title',
+                'st.section',
+                'dprtmnt.department',
+                'dvsnt.division',
+                'ast.user_type_id',
+                'pwt.password'
+            )
+            ->leftJoin('employee_masterfile_tab as emt', 'emt.id', '=', 'pit.employee_id')
+            ->leftJoin('password_tab as pwt', 'pwt.employee_id', '=', 'emt.id')
+            ->leftJoin('section_tab as st', 'st.id', '=', 'emt.section_id')
+            ->leftJoin('department_tab as dprtmnt', 'dprtmnt.id', '=', 'emt.department_id')
+            ->leftJoin('division_tab as dvsnt', 'dvsnt.id', '=', 'emt.division_id')
+            ->leftJoin('user_access_tab as ast', 'ast.employee_id', '=', 'emt.id')
+            ->where('emt.employee_no', $employee_number)
+            ->first();
+            
+        return $query;
+    }
+
     public static function getUserById ($employee_id)
     {
         $query = DB::connection('ipc_central')
