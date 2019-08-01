@@ -3,17 +3,23 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import jQuery from 'jquery'
+
 import ApiService from './services/api.service'
 import TokenService from './services/storage.service'
 
-Vue.config.productionTip = false
+global.jQuery = jQuery
+global.$ = jQuery
 
-ApiService.init(process.env.VUE_APP_URL)
+Vue.config.productionTip = false
+ApiService.init('http://localhost/laravue') // backend api
 
 if (TokenService.getToken()) ApiService.setHeader()
 
 new Vue({
-  router,
   store,
+  router,
   render: h => h(App),
 }).$mount('#app')

@@ -1,10 +1,10 @@
-const AppLayout = () => import(/* webpackChunkName: "main" */ '../layouts/AppLayout')
-const Login = () => import(/* webpackChunkName: "login" */ '../pages/Login')
-const Home = () => import(/* webpackChunkName: "home" */ '../pages/Home')
+const AppLayout = () => import(/* webpackChunkName: "main" */ '../components/layouts/AppLayout')
+const Home = () => import(/* webpackChunkName: "home" */ '../components/home/Home')
+const About = () => import(/* webpackChunkName: "about" */ '../components/about/About')
+const Login = () => import(/* webpackChunkName: "login" */ '../components/login/Login')
 
 const routes = [
   { path: '/', redirect: '/home' },
-  { path: '*', redirect: '/home' },
   {
     path: '/', 
     component: AppLayout,
@@ -13,6 +13,7 @@ const routes = [
     },
     children: [
       { path: '/home', component: Home },
+      { path: '/about', component: About }
     ]
   },
   {
@@ -21,7 +22,8 @@ const routes = [
     meta: {
       guest: true
     }
-  }
+  },
+  { path: '*', redirect: '/home' }
 ];
 
 export default routes

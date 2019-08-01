@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["home"],{bc13b:function(e,t,n){"use strict";n.r(t);var l=function(){var e=this,t=e.$createElement;e._self._c;return e._m(0)},a=[function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",[n("h4",[e._v("Test")])])}],c={name:"App",metaInfo:{title:"Home",titleTemplate:"%s | Sample Project"}},r=c,o=n("2877"),s=Object(o["a"])(r,l,a,!1,null,null,null);t["default"]=s.exports}}]);
+//# sourceMappingURL=home.dce90093.js.map

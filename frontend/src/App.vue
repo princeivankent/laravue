@@ -1,13 +1,11 @@
 <template>
-  <router-view></router-view>
+  <router-view />
 </template>
 
 <script>
 export default {
-  name: 'App',
-  metaInfo: {
-    title: 'Default Title',
-    titleTemplate: '%s | Sample Project'
-  }
+  name: 'App'
 }
 </script>
+
+<style lang="scss" src="./App.scss" />

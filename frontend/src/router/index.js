@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import routes from './routes'
 import VueMeta from 'vue-meta'
 import TokenService from '../services/storage.service'
+import { checkAuthParams } from './middlewares/auth-middleware'
 
 Vue.use(VueRouter)
 Vue.use(VueMeta)
@@ -13,7 +14,6 @@ const router = new VueRouter({
   routes
 })
 
-// Client-side middleware
 router.beforeEach((to, from, next) => {
   const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
   const guest = to.matched.some(record => record.meta.guest)
@@ -29,7 +29,7 @@ router.beforeEach((to, from, next) => {
   } 
   else if (guest) {
     if (!isLoggedIn) {
-      next()
+      checkAuthParams(to.query, next)
     }
     else {
       next('/home')
